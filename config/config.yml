@@ -1,0 +1,22 @@
+# 服务配置
+server:
+  # 启动端口
+  port: 10070
+  # 服务运行模式（debug/release，正式版改为 release）
+  mode: debug
+  # token过期时间小时
+  token_expiration: 24
+# 数据库配置
+database:
+  # 数据库类型
+  driver : mysql
+  # 数据库链接
+  host: 127.0.0.1
+  # 数据库端口
+  port: 3306
+  # 数据库名称
+  database: test
+  # 用户名
+  username: root
+  # 密码
+  password: root

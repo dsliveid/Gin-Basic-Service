@@ -1,0 +1,403 @@
+definitions:
+  global.Operator:
+    properties:
+      c_user_name:
+        description: 姓名
+        type: string
+      c_user_number:
+        description: 工号
+        type: string
+    type: object
+  model.FieldManageAdd:
+    properties:
+      b_enable:
+        description: 是否可用
+        type: integer
+      b_foreign_key:
+        description: 是否为外键 0：非外键 1：外键
+        type: integer
+      b_primary_key:
+        description: 是否为主键 0：非主键 1：主键
+        type: integer
+      b_synchronous:
+        description: 是否已同步 0：未同步 1：已同步
+        type: integer
+      c_association_field:
+        description: 关联字段
+        type: integer
+      c_association_table:
+        description: 关联表
+        type: integer
+      c_default_value:
+        description: 默认值
+        type: string
+      c_field:
+        description: 列名
+        type: string
+      c_field_details:
+        description: 列说明
+        type: string
+      c_field_name:
+        description: 列名称
+        type: string
+      c_field_type:
+        description: 列类型
+        type: string
+      c_primary_rule:
+        description: 主键生成规则 input：手动输入 auto_increment：自增长 snowflake_id：雪花ID
+        type: string
+      c_table_id:
+        description: 表id，关联表：table_manage.id
+        type: integer
+      i_field_length:
+        description: 字段长度
+        type: integer
+    type: object
+  model.FieldManageUpdate:
+    properties:
+      b_enable:
+        description: 是否可用
+        type: integer
+      b_foreign_key:
+        description: 是否为外键 0：非外键 1：外键
+        type: integer
+      b_primary_key:
+        description: 是否为主键 0：非主键 1：主键
+        type: integer
+      b_synchronous:
+        description: 是否已同步 0：未同步 1：已同步
+        type: integer
+      c_association_field:
+        description: 关联字段
+        type: integer
+      c_association_table:
+        description: 关联表
+        type: integer
+      c_default_value:
+        description: 默认值
+        type: string
+      c_field:
+        description: 列名
+        type: string
+      c_field_details:
+        description: 列说明
+        type: string
+      c_field_name:
+        description: 列名称
+        type: string
+      c_field_type:
+        description: 列类型
+        type: string
+      c_primary_rule:
+        description: 主键生成规则 input：手动输入 auto_increment：自增长 snowflake_id：雪花ID
+        type: string
+      c_table_id:
+        description: 表id，关联表：table_manage.id
+        type: integer
+      i_field_length:
+        description: 字段长度
+        type: integer
+      id:
+        description: 编号
+        type: integer
+    type: object
+  model.TableManageAdd:
+    properties:
+      b_enable:
+        description: 是否可用，0：不可用，1：可用
+        type: integer
+      c_table:
+        description: 表名
+        type: string
+      c_table_details:
+        description: 表说明
+        type: string
+      c_table_name:
+        description: 表名称
+        type: string
+      fields:
+        description: 列信息
+        items:
+          $ref: '#/definitions/model.FieldManageAdd'
+        type: array
+    type: object
+  model.TableManageQuery:
+    properties:
+      c_table:
+        description: 表名
+        type: string
+      c_table_name:
+        description: 表名称
+        type: string
+      id:
+        description: 编号
+        type: integer
+    type: object
+  model.TableManageUpdate:
+    properties:
+      b_enable:
+        description: 是否可用，0：不可用，1：可用
+        type: integer
+      c_table:
+        description: 表名
+        type: string
+      c_table_details:
+        description: 表说明
+        type: string
+      c_table_name:
+        description: 表名称
+        type: string
+      fields:
+        description: 列信息
+        items:
+          $ref: '#/definitions/model.FieldManageUpdate'
+        type: array
+      id:
+        description: 编号
+        type: integer
+    type: object
+  util.PageInfo:
+    properties:
+      page:
+        description: 当前页码
+        example: 1
+        type: integer
+      page_size:
+        description: 每页记录数
+        example: 10
+        type: integer
+      query_info:
+        description: 自定义查询条件
+      total_count:
+        description: 总记录数
+        example: 0
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: 应用程序的简短描述.
+  title: Swagger Gin-Basic-Service API
+  version: "1.0"
+paths:
+  /api/custom/routing/table_manage/{id}:
+    get:
+      consumes:
+      - application/json
+      description: 获取指定表的信息
+      parameters:
+      - description: 表ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - token: []
+      summary: 获取表信息
+      tags:
+      - table_manage
+  /api/custom/routing/table_manage/{id}/delete:
+    delete:
+      consumes:
+      - application/json
+      description: 删除指定表
+      parameters:
+      - description: 表ID
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - token: []
+      summary: 删除表
+      tags:
+      - table_manage
+  /api/custom/routing/table_manage/{id}/update:
+    put:
+      consumes:
+      - application/json
+      description: 更新指定表的信息
+      parameters:
+      - description: 表信息
+        in: body
+        name: table
+        required: true
+        schema:
+          $ref: '#/definitions/model.TableManageUpdate'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - token: []
+      summary: 更新表信息
+      tags:
+      - table_manage
+  /api/custom/routing/table_manage/create:
+    post:
+      consumes:
+      - application/json
+      description: 创建新的表
+      parameters:
+      - description: 表信息
+        in: body
+        name: table
+        required: true
+        schema:
+          $ref: '#/definitions/model.TableManageAdd'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - token: []
+      summary: 创建表
+      tags:
+      - table_manage
+  /api/custom/routing/table_manage/query:
+    post:
+      consumes:
+      - application/json
+      description: 获取表的信息列表
+      parameters:
+      - description: 表信息
+        in: body
+        name: table
+        required: true
+        schema:
+          allOf:
+          - $ref: '#/definitions/util.PageInfo'
+          - properties:
+              query_info:
+                $ref: '#/definitions/model.TableManageQuery'
+            type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      security:
+      - token: []
+      summary: 获取表信息列表
+      tags:
+      - table_manage
+  /login:
+    post:
+      consumes:
+      - application/json
+      description: Login
+      parameters:
+      - description: 表信息
+        in: body
+        name: table
+        required: true
+        schema:
+          $ref: '#/definitions/global.Operator'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: 登录接口
+schemes:
+- http
+securityDefinitions:
+  token:
+    in: header
+    name: token
+    type: apiKey
+swagger: "2.0"

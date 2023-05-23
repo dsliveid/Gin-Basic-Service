@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Gin-Basic-Service" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="Gin-Basic-Service" />
+    <working_directory value="$PROJECT_DIR$/../Gin-Basic-Service" />
+    <kind value="DIRECTORY" />
+    <package value="Gin-Basic-Service" />
+    <directory value="$PROJECT_DIR$/../Gin-Basic-Service" />
+    <filePath value="$PROJECT_DIR$" />
+    <output_directory value="$PROJECT_DIR$/../Gin-Basic-Service/bin" />
+    <method v="2" />
+  </configuration>
+</component>
